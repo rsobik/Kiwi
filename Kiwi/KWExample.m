@@ -25,7 +25,6 @@
 #import "KWExampleNode.h"
 #import "KWExampleSuite.h"
 
-
 @interface KWExample ()
 
 @property (nonatomic, readonly) NSMutableArray *verifiers;
@@ -302,6 +301,26 @@ void specify(KWVoidBlock aBlock)
 
 void pending_(NSString *aDescription, KWVoidBlock ignoredBlock) {
     pendingWithCallSite(nil, aDescription, ignoredBlock);
+}
+
+void behaveLike(NSString *sharedExampleGroupName, KWSharedExampleGroupObjectBlock contextBlock)
+{
+    Class sharedExampleGroupClass = NSClassFromString(sharedExampleGroupName);
+    if (sharedExampleGroupClass == Nil) {
+        [NSException raise:@"KWMatcherException" format:@"shared example group named %@ does not exist!", sharedExampleGroupName];
+    }
+
+    SEL selector = @selector(buildSharedExampleGroupsWithContextBlock:);
+
+    // Only return invocation if the receiver is a concrete spec that has overridden -buildExampleGroups.
+    if ([sharedExampleGroupClass methodForSelector:selector] == [KWSpec methodForSelector:selector])
+        return;
+
+    context([NSString stringWithFormat:@"shared example group %@", sharedExampleGroupName], ^{
+        [[KWExampleGroupBuilder sharedExampleGroupBuilder] buildExampleGroups:^{
+            [sharedExampleGroupClass buildSharedExampleGroupsWithContextBlock:contextBlock];
+        }];
+    });
 }
 
 void describeWithCallSite(KWCallSite *aCallSite, NSString *aDescription, KWVoidBlock aBlock) {

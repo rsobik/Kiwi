@@ -62,3 +62,20 @@
     } \
     \
     @end
+
+// Shared example group declarations.
+// Example group declarations.
+#define SHARED_EXAMPLE_GROUP_BEGIN(name) \
+    \
+    @interface name : KWSpec \
+    \
+    @end \
+    \
+    @implementation name \
+    \
+    + (void)buildSharedExampleGroupsWithContextBlock:(KWSharedExampleGroupObjectBlock)contextBlock { \
+
+#define SHARED_EXAMPLE_GROUP_END \
+    } \
+    \
+    @end

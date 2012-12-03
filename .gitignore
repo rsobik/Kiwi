@@ -3,7 +3,7 @@
 
 # Build directory
 build/
- 
+
 # XCode user specific files
 xcuserdata/
 *.xcworkspace/
@@ -12,3 +12,4 @@ xcuserdata/
 *.perspectivev3
 *.pbxuser
 output
+DerivedData

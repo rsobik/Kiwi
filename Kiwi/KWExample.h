@@ -12,6 +12,7 @@
 #import "KWExampleNodeVisitor.h"
 #import "KWReporting.h"
 #import "KWExampleGroupDelegate.h"
+#import "KWSpec.h"
 
 @class KWCallSite;
 @class KWExampleSuite;
@@ -69,6 +70,7 @@ void afterEach(KWVoidBlock aBlock);
 void it(NSString *aDescription, KWVoidBlock aBlock);
 void specify(KWVoidBlock aBlock);
 void pending_(NSString *aDescription, KWVoidBlock ignoredBlock);
+void behaveLike(NSString *sharedExampleGroupName, KWSharedExampleGroupObjectBlock objectBlock);
 
 void describeWithCallSite(KWCallSite *aCallSite, NSString *aDescription, KWVoidBlock aBlock);
 void contextWithCallSite(KWCallSite *aCallSite, NSString *aDescription, KWVoidBlock aBlock);

@@ -12,6 +12,7 @@
 
 
 @class KWCallSite;
+typedef id(^KWSharedExampleGroupObjectBlock)(void);
 
 @interface KWSpec : SenTestCase<KWExampleDelegate>
 
@@ -27,5 +28,6 @@
 #pragma mark Building Example Groups
 
 + (void)buildExampleGroups;
++ (void)buildSharedExampleGroupsWithContextBlock:(KWSharedExampleGroupObjectBlock)objectBlock;
 
 @end

@@ -39,6 +39,8 @@
 
 + (void)buildExampleGroups {}
 
++ (void)buildSharedExampleGroupsWithContextBlock:(KWSharedExampleGroupObjectBlock)objectBlock {}
+
 /* Reported by XCode SenTestingKit Runner before and after invocation of the test
    Use camel case to make method friendly names from example description
  */
