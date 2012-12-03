@@ -70,7 +70,7 @@ void afterEach(KWVoidBlock aBlock);
 void it(NSString *aDescription, KWVoidBlock aBlock);
 void specify(KWVoidBlock aBlock);
 void pending_(NSString *aDescription, KWVoidBlock ignoredBlock);
-void behaveLike(NSString *sharedExampleGroupName, KWSharedExampleGroupObjectBlock objectBlock);
+void behaveLike(NSString *description, NSString *sharedExampleGroupName, KWSharedExampleGroupObjectBlock contextBlock);
 
 void describeWithCallSite(KWCallSite *aCallSite, NSString *aDescription, KWVoidBlock aBlock);
 void contextWithCallSite(KWCallSite *aCallSite, NSString *aDescription, KWVoidBlock aBlock);

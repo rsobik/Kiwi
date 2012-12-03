@@ -303,7 +303,7 @@ void pending_(NSString *aDescription, KWVoidBlock ignoredBlock) {
     pendingWithCallSite(nil, aDescription, ignoredBlock);
 }
 
-void behaveLike(NSString *sharedExampleGroupName, KWSharedExampleGroupObjectBlock contextBlock)
+void behaveLike(NSString *description, NSString *sharedExampleGroupName, KWSharedExampleGroupObjectBlock contextBlock)
 {
     Class sharedExampleGroupClass = NSClassFromString(sharedExampleGroupName);
     if (sharedExampleGroupClass == Nil) {
@@ -316,10 +316,8 @@ void behaveLike(NSString *sharedExampleGroupName, KWSharedExampleGroupObjectBloc
     if ([sharedExampleGroupClass methodForSelector:selector] == [KWSpec methodForSelector:selector])
         return;
 
-    context([NSString stringWithFormat:@"shared example group %@", sharedExampleGroupName], ^{
-        [[KWExampleGroupBuilder sharedExampleGroupBuilder] buildExampleGroups:^{
-            [sharedExampleGroupClass buildSharedExampleGroupsWithContextBlock:contextBlock];
-        }];
+    context(description, ^{
+        [sharedExampleGroupClass buildSharedExampleGroupsWithContextBlock:contextBlock];
     });
 }
 

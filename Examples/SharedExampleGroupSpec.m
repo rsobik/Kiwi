@@ -3,7 +3,7 @@
 
 SPEC_BEGIN(SharedExampleGroupSpec)
 
-behaveLike(@"TestExampleGroup", ^{
+behaveLike(@"The object should behave like a test example group", @"TestExampleGroup", ^{
     return @{ @"object" : @"the object that should behave like TestExampleGroup" };
 });
 
